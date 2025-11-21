@@ -6,21 +6,57 @@
     <title>Donors Data</title>
 </head>
 <style>
-    
+    h1{
+        text-align: center;
+        color: lightblue;
+    }
+    h3{
+        text-align: center;
+        color: red;
+    }
+    table{
+        width: 80%;
+        border: 2px black solid;
+    }
+    th{
+        border: 1px black double;
+    }
 </style>
 <body>
-    <h1>Registered Donor List</h1>
-    <form method="get">
-    <select name="bg">
-        <option value="a+">A+</option>
-        <option value="a-">A-</option>
-        <option value="b+">B+</option>
-        <option value="b-">B-</option>
-        <option value="o+">O+</option>
-        <option value="o-">O+</option>
-        <option value="ab+">AB+</option>
-        <option value="ab-">AB-</option>
-    </select>
-    </form>
+    <h3>YOURCARE BLOOD BANK</h3>
+    <h1>REGISTERED DONORS LIST</h1>
+    <center>
+        <form method="get">
+            <label>Enter Blood Group to check:</label>
+            <select name="bg">
+                <option value="a+">A+</option>
+                <option value="a-">A-</option>
+                <option value="b+">B+</option>
+                <option value="b-">B-</option>
+                <option value="o+">O+</option>
+                <option value="o-">O+</option>
+                <option value="ab+">AB+</option>
+                <option value="ab-">AB-</option>
+            </select>
+        </form>
+        <table>
+            <tr>
+                <th>ID</th>
+                <th>Donor Name</th>
+                <th>Donor Age</th>
+                <th>Blood Group</th>
+                <th>Phone Number</th>
+                <th>Delete Donor</th>
+            </tr>
+            <tr>
+                <td>{ID}</td>
+                <td>{Donor Name}</td>
+                <td>{Donor Age}</td>
+                <td>{Blood Group}</td>
+                <td>{Phone Number}</td>
+                <td>{Delete Donor}</td>
+            </tr>
+        </table>
+    </center>
 </body>
 </html>
