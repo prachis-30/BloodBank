@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard</title>
+    <style>
+        h1{
+            color: lightblue;
+        }
+        h3{
+            color:red;
+        }
+        .main{
+            width: 100%;
+        }
+        .tot{
+            width: 40%;
+            float: left;
+            padding: 15px;
+            margin: 5px;
+        }
+        .grpdata{
+            width: 50%;
+            float: right;
+            padding: 15px;
+            margin: 5px;
+        }
+        .links{
+            clear: both;
+            margin-top: 20px;
+        }
+        .button1{
+            width: 200px;
+            background-color: lightblue;
+            display: block;
+            float: left;
+            margin-left: 25%;
+        }
+        .button2{
+            width: 200px;
+            background-color: lightblue;
+            display: block;
+            float: right;
+            margin-right: 25%;
+        }
+        a{
+            width : 50%;
+            display: block;
+            color: black;
+            padding: 10px;
+            margin-top: 100px;
+            border-radius: 5px;
+            text-align: center;
+        }
+        a:link{
+            text-decoration: none;
+            font-weight: bold;
+        }
+        a:hover{
+            font-size: large;
+        }
+    </style>
+</head>
+<body>
+    <h3 align="center">YOURCARE BLOOD BANK</h3>
+    <h1 align="center">BLOOD BANK DASHBOARD</h1>
+
+    <div class="main">
+        <div class="tot">
+            <h2>Total Donors</h2>
+        </div>
+
+        <div class="grpdata">
+            <h2>Donors per Blood Group</h2>
+            <ul>
+                <li>A+ -> {{}}</li>
+                <li>A- -> {{}}</li>
+                <li>B+ -> {{}}</li>
+                <li>B- -> {{}}</li>
+                <li>O+ -> {{}}</li>
+                <li>O- -> {{}}</li>
+                <li>AB+ -> {{}}</li>
+                <li>AB- -> {{}}</li>
+            </ul>
+        </div>
+
+        <div class="links">
+            <a href="/add" class="button1">ADD DONOR</a>
+            <a href="/donors" class="button2">VIEW DONOR</a>
+        </div>
+    </div>
+</body>
+</html>

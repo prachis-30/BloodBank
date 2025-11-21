@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BloodBank</title>
+    <style>
+        h2{
+            color: skyblue;
+        }
+        h1{
+            color: red;
+            font-variant: small-caps;
+        }
+        .element{
+            padding: 0.5%;
+        }
+        .sub{
+            padding: 20px;
+            color: white;
+            font-weight: bold;
+            border-radius: 15px;
+            background-color: black;
+        }
+        
+    </style>
+</head>
+<body>
+    <center>
+        <h1>YOURCARE BLOOD BANK</h1>
+        <h1>welcomes you</h1>
+        <h1>Thankyou for donating blood and saving lives</h1>
+        <h2>ADD NEW BLOOD DONOR</h2>
+        <form action="" method="post">
+            <div class="element"><label>Your Full Name:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</label><input type="text" name="fullname"></div>
+            <br>
+            <div class="element"><label>Enter Age:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</label><input type="number" name="age" max="100" min="18"></div>
+            <br>
+            <div class="element"><label>Phone Number:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</label><input type="number" name="phone"></div>
+            <br>
+            <div class="element"><label>Blood Group:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</label>
+            <select name="bloodgrp" required>
+                <option value="a+">A+</option>
+                <option value="a-">A-</option>
+                <option value="b+">B+</option>
+                <option value="b-">B-</option>
+                <option value="o+">O+</option>
+                <option value="o-">O-+</option>
+                <option value="ab+">AB+</option>
+                <option value="ab-">AB-</option>
+            </select></div>
+            <br>
+            <div class="element"><input type="submit" name="submit" value="SUBMIT YOUR DETAILS" class="sub"></div>
+        </form>
+    </center>
+</body>
+</html>
