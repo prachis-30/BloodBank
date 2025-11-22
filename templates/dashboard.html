@@ -69,19 +69,20 @@
     <div class="main">
         <div class="tot">
             <h2>Total Donors</h2>
+            
         </div>
 
         <div class="grpdata">
             <h2>Donors per Blood Group</h2>
             <ul>
-                <li>A+ -> {{}}</li>
-                <li>A- -> {{}}</li>
-                <li>B+ -> {{}}</li>
-                <li>B- -> {{}}</li>
-                <li>O+ -> {{}}</li>
-                <li>O- -> {{}}</li>
-                <li>AB+ -> {{}}</li>
-                <li>AB- -> {{}}</li>
+                <li>A+ -> {{grp_cnt['a+']}}</li>
+                <li>A- -> {{grp_cnt['a-']}}</li>
+                <li>B+ -> {{grp_cnt['b+']}}</li>
+                <li>B- -> {{grp_cnt['b-']}}</li>
+                <li>O+ -> {{grp_cnt['o+']}}</li>
+                <li>O- -> {{grp_cnt['o-']}}</li>
+                <li>AB+ -> {{grp_cnt['ab+']}}</li>
+                <li>AB- -> {{grp_cnt['ab-']}}</li>
             </ul>
         </div>
 

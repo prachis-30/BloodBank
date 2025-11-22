@@ -57,7 +57,23 @@ try:
     
     @app.route('/dashboard')
     def dash():
-        return render_template('dashboard.html')
+        conn = sqlite3.connect('donors.db')
+        cursor = conn.cursor()
+
+        cursor.execute("SELECT COUNT(*) FROM donors")
+        total_donor = cursor.fetchone()[0]
+
+        groups = ['a+', 'a-', 'b+', 'b-', 'o+', 'o-', 'ab+', 'ab-']
+        grp_cnt = {}
+
+        for g in groups:
+            cursor.execute("SELECT COUNT(*) FROM donors WHERE lower(blood_group) = ?", (g,))
+            grp_cnt[g] = cursor.fetchone()[0]
+
+        conn.close()
+
+        return render_template('dashboard.html', total_donor=total_donor, grp_cnt=grp_cnt)
+
 
     if __name__ == '__main__':
         app.run(debug=True)
