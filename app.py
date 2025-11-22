@@ -47,9 +47,16 @@ try:
 
     @app.route('/donors')
     def donors():
+        bg = request.args.get('bg')
+
         conn = sqlite3.connect('donors.db')
         cursor = conn.cursor()
-        cursor.execute("SELECT * FROM donors")
+
+        if bg:
+            cursor.execute("SELECT * FROM donors WHERE blood_group = ?", (bg,))
+        else:
+            cursor.execute("SELECT * FROM donors")
+
         donor_list = cursor.fetchall()
         conn.close()
 
@@ -73,6 +80,18 @@ try:
         conn.close()
 
         return render_template('dashboard.html', total_donor=total_donor, grp_cnt=grp_cnt)
+
+    @app.route('/delete')
+    def delete():
+        donor_id = request.args.get('id')
+
+        conn = sqlite3.connect('donors.db')
+        cursor = conn.cursor()
+        cursor.execute("DELETE FROM donors WHERE id = ?", (donor_id,))
+        conn.commit()
+        conn.close()
+
+        return redirect('/donors')
 
 
     if __name__ == '__main__':
