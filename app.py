@@ -54,6 +54,10 @@ try:
         conn.close()
 
         return render_template('donors.html', donors=donor_list)
+    
+    @app.route('/dashboard')
+    def dash():
+        return render_template('dashboard.html')
 
     if __name__ == '__main__':
         app.run(debug=True)
