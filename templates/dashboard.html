@@ -15,7 +15,7 @@
             width: 100%;
         }
         .tot{
-            width: 40%;
+            width: 35%;
             float: left;
             padding: 15px;
             margin: 5px;
@@ -23,26 +23,25 @@
         .grpdata{
             width: 50%;
             float: right;
-            padding: 15px;
+            padding: 10px;
             margin: 5px;
         }
         .links{
-            clear: both;
-            margin-top: 20px;
+            margin-top: 5px;
         }
         .button1{
             width: 200px;
             background-color: lightblue;
             display: block;
-            float: left;
-            margin-left: 25%;
+            margin-left: 150px;
+            align-items: center;
         }
         .button2{
             width: 200px;
             background-color: lightblue;
             display: block;
-            float: right;
-            margin-right: 25%;
+            margin-left: 150px;
+            align-items: center;
         }
         a{
             width : 50%;
@@ -70,6 +69,9 @@
         <div class="tot">
             <h2>Total Donors</h2>
             <h1>{{total_donor}}</h1>
+                <div style="text-align: center;">
+                    <img src="/static/piechart.png" alt="Blood Group Pie Chart" style="width: 350px; border-radius: 10px;">
+                </div>
         </div>
 
         <div class="grpdata">
@@ -84,12 +86,14 @@
                 <li>AB+ -> {{grp_cnt['ab+']}}</li>
                 <li>AB- -> {{grp_cnt['ab-']}}</li>
             </ul>
-        </div>
-
+        
         <div class="links">
             <a href="/" class="button1">ADD NEW DONOR</a>
             <a href="/donors" class="button2">VIEW DONORS</a>
         </div>
+        </div>
+
+        
     </div>
 </body>
 </html>
