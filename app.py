@@ -1,16 +1,18 @@
+import os
+import matplotlib.pyplot as plt
 from flask import Flask, render_template, request, redirect
 import sqlite3
 
 try:
     app = Flask(__name__)
 
-    # ---------- DATABASE SETUP ----------
+    # DATABASE
     def init_db():
         conn = sqlite3.connect('donors.db')
         cursor = conn.cursor()
         cursor.execute("""
             CREATE TABLE IF NOT EXISTS donors (
-                id INTEGER PRIMARY KEY AUTOINCREMENT,
+                id INTEGER PRIMARY KEY AUTOINCREMENT,   
                 name TEXT NOT NULL,
                 age INTEGER NOT NULL,
                 blood_group TEXT NOT NULL,
@@ -22,7 +24,7 @@ try:
 
     init_db()
 
-    # ---------- ROUTES ----------
+    #  ROUTES 
     @app.route('/')
     def index():
         return render_template('index.html')
@@ -79,7 +81,35 @@ try:
 
         conn.close()
 
-        return render_template('dashboard.html', total_donor=total_donor, grp_cnt=grp_cnt)
+        labels = groups
+        sizes = [grp_cnt[g] for g in groups]
+
+    # Avoid error when all counts are zero
+        if sum(sizes) == 0:
+            return render_template('dashboard.html',
+                               total_donor=total_donor,
+                               grp_cnt=grp_cnt,
+                               chart_available=False)
+
+    # Create chart
+        import matplotlib
+        matplotlib.use('Agg')
+        import matplotlib.pyplot as plt
+        import os
+
+        chart_path = os.path.join("static", "piechart.png")
+
+        plt.figure(figsize=(5,5))
+        plt.pie(sizes, labels=labels, autopct='%1.1f%%')
+        plt.title("Donors by Blood Group")
+        plt.savefig(chart_path)
+        plt.close()
+
+        return render_template('dashboard.html',
+                           total_donor=total_donor,
+                           grp_cnt=grp_cnt,
+                           chart_available=True,
+                           chart="piechart.png")
 
     @app.route('/delete')
     def delete():
