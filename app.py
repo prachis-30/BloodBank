@@ -50,14 +50,27 @@ try:
     @app.route('/donors')
     def donors():
         bg = request.args.get('bg')
+        search = request.args.get('search')
 
         conn = sqlite3.connect('donors.db')
         cursor = conn.cursor()
 
+    # Base query
+        query = "SELECT * FROM donors WHERE 1=1"
+        params = []
+
+    # Blood group filter
         if bg:
-            cursor.execute("SELECT * FROM donors WHERE blood_group = ?", (bg,))
-        else:
-            cursor.execute("SELECT * FROM donors")
+            query += " AND lower(blood_group) = ?"
+            params.append(bg.lower())
+
+    # Name search filter
+        if search:
+            query += " AND lower(name) LIKE ?"
+            params.append("%" + search.lower() + "%")
+
+    # Execute final built query
+        cursor.execute(query, params)
 
         donor_list = cursor.fetchall()
         conn.close()

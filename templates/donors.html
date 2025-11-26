@@ -102,11 +102,71 @@
     cursor: pointer;
     }
     </style>
+    <script>
+document.getElementById("donorForm").addEventListener("submit", function (e) {
+    const name = document.getElementById("name").value.trim();
+    const age = document.getElementById("age").value.trim();
+    const phone = document.getElementById("phone").value.trim();
+    const blood = document.getElementById("blood_group").value;
+
+    if (name === "") {
+        alert("Please enter donor's full name.");
+        e.preventDefault();
+        return;
+    }
+
+    if (age === "" || age < 18 || age > 100) {
+        alert("Age must be between 18 and 100.");
+        e.preventDefault();
+        return;
+    }
+
+    if (!/^[0-9]{10}$/.test(phone)) {
+        alert("Phone number must be exactly 10 digits.");
+        e.preventDefault();
+        return;
+    }
+
+    if (blood === "" || blood === "--Select--") {
+        alert("Please select a valid blood group.");
+        e.preventDefault();
+        return;
+    }
+});
+</script>
+
 </head>
 <body>
     <h3>YOURCARE BLOOD BANK</h3>
     <h1>REGISTERED DONORS LIST</h1>
     <div class="container">
+        <form method="get" style="margin-top: 20px; text-align: center;">
+    <input 
+        type="text" 
+        name="search" 
+        placeholder="Search Donor Name..."
+        value="{{ request.args.get('search', '') }}"
+        style="
+            width: 60%;
+            padding: 12px;
+            border-radius: 12px;
+            border: 2px solid #0077cc;
+            font-size: 15px;
+        "
+    >
+    <button type="submit" style="
+        padding: 12px 20px;
+        background: #0077cc;
+        color: white;
+        font-weight: bold;
+        border: none;
+        border-radius: 12px;
+        cursor: pointer;
+        margin-left: 5px;
+    ">Search</button>
+</form>
+
+<br><br>
         <form method="get">
             <label>Enter Blood Group to check:</label>
             <select name="bg" onchange="this.form.submit()">
@@ -134,7 +194,18 @@
     ⬅ Go Back
 </a>
 
+{% if donors|length == 0 %}
+    <p style="
+        color: red;
+        font-weight: bold;
+        font-size: 18px;
+        margin-top: 20px;
+    ">
+        ❌ No donors found!
+    </p>
+{% endif %}
 
+        
         <table>
             <tr>
                 <th>ID</th>
@@ -149,7 +220,7 @@
                 <td>{{ d[0] }}</td>
                 <td>{{ d[1] }}</td>
                 <td>{{ d[2] }}</td>
-                <td>{{ d[3] }}</td>
+                <td>{{ d[3].upper() }}</td>
                 <td>{{ d[4] }}</td>
                 <td><a href="#" onclick="confirmDelete({{ d[0] }})">Delete</a></td>
             </tr>
