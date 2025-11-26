@@ -4,113 +4,124 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Dashboard</title>
-    <style>
+<style>
     body {
-        margin: 0;
-        padding: 0;
-        height: 100vh;
-        overflow: hidden;  /* No scrollbars */
-        display: flex;
-        flex-direction: column;
-        background: white;
-    }
+    margin: 0;
+    padding: 20px 0;
+    background: #ff8f8f;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    font-family: Arial, sans-serif;
+    overflow: hidden; /* ensure no scroll */
+}
 
-    h1 {
-        color: lightblue;
-        margin: 10px 0;
-    }
+/* TOP HEADINGS */
+h3 {
+    color: red;
+    font-size: 28px;
+    margin: 0;
+    text-align: center;
+}
 
-    h3 {
-        color: red;
-        margin: 5px 0;
-    }
+h1 {
+    color: #0077cc;
+    font-size: 32px;
+    margin: 5px 0 15px 0;
+    text-align: center;
+}
 
-    .main {
-        flex: 1;
-        display: flex;
-        justify-content: space-evenly;
-        align-items: center; /* Center vertically */
-        padding: 0;
-        margin: 0;
-    }
+/* WHITE BOX */
+.dashboard-box {
+    width: 85%;
+    background: white;
+    border-radius: 18px;
+    padding: 25px;
+    box-shadow: 0 0 12px rgba(0,0,0,0.2);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
 
-    .tot, .grpdata {
-        height: 80%;
-        display: flex;
-        flex-direction: column;
-        justify-content: center;   /* vertical center */
-        align-items: center;       /* horizontal center */
-        text-align: center;
-    }
+    /* new fix */
+    max-height: calc(100vh - 150px); 
+    overflow: hidden;
+}
 
-    .links {
-        margin-top: 25px;
-        display: flex;
-        flex-direction: column;
-        gap: 15px;
-        align-items: center; /* center buttons */
-    }
+/* LEFT SIDE */
+.left-side, .right-side {
+    width: 45%;
+    text-align: center;
+}
 
-    .button1, .button2 {
-        width: 200px;
-        height: 45px;
-        background-color: lightblue;
-        border-radius: 10px;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        cursor: pointer;
-    }
+.left-side h2,
+.right-side h2 {
+    font-size: 24px;
+    margin-bottom: 10px;
+}
 
-    a {
-        text-decoration: none;
-        color: black;
-        font-weight: bold;
-        font-size: 18px;
-        width: 100%;
-        display: block;
-        text-align: center;
-    }
 
-    a:hover {
-        transform: scale(1.05);
-    }
+.left-side h1 {
+    font-size: 35px;
+    color: #0077cc;
+}
+
+/* BUTTONS */
+.btn {
+    display: block;
+    width: 250px;
+    padding: 14px 0;
+    background: #0077cc;
+    border-radius: 12px;
+    font-size: 18px;
+    color: white;
+    font-weight: bold;
+    text-decoration: none;
+    margin: 12px auto 0 auto;
+}
+
+.btn:hover {
+    background: #005fa3;
+    transform: scale(1.05);
+}
+
+
 </style>
 
 </head>
 <body>
-    <h3 align="center">YOURCARE BLOOD BANK</h3>
-    <h1 align="center">BLOOD BANK DASHBOARD</h1>
+<div class="header">
+<h3>YOURCARE BLOOD BANK</h3>
+<h1>BLOOD BANK DASHBOARD</h1>
+</div>
+<div class="main-container">
+<div class="dashboard-box">
 
-    <div class="main">
-        <div class="tot">
-            <h2>Total Donors</h2>
-            <h1>{{total_donor}}</h1>
-                <div style="text-align: center;">
-                    <img src="/static/piechart.png" alt="Blood Group Pie Chart" style="width: 350px; border-radius: 10px;">
-                </div>
-        </div>
+    <div class="left-side">
+        <h2>Total Donors</h2>
+        <h1>{{ total_donor }}</h1>
 
-        <div class="grpdata">
-            <h2>Donors per Blood Group</h2>
-            <ul>
-                <li>A+ -> {{grp_cnt['a+']}}</li>
-                <li>A- -> {{grp_cnt['a-']}}</li>
-                <li>B+ -> {{grp_cnt['b+']}}</li>
-                <li>B- -> {{grp_cnt['b-']}}</li>
-                <li>O+ -> {{grp_cnt['o+']}}</li>
-                <li>O- -> {{grp_cnt['o-']}}</li>
-                <li>AB+ -> {{grp_cnt['ab+']}}</li>
-                <li>AB- -> {{grp_cnt['ab-']}}</li>
-            </ul>
-        
-        <div class="links">
-            <a href="/" class="button1">ADD NEW DONOR</a>
-            <a href="/donors" class="button2">VIEW DONORS</a>
-        </div>
-        </div>
-
-        
+        <img src="/static/piechart.png" 
+             style="width: 300px;margin-right: 70px;">
     </div>
+
+    <div class="right-side">
+        <h2>Donors per Blood Group</h2>
+        <ul type="none">
+            <li>A+ → {{grp_cnt['a+']}}</li>
+            <li>A- → {{grp_cnt['a-']}}</li>
+            <li>B+ → {{grp_cnt['b+']}}</li>
+            <li>B- → {{grp_cnt['b-']}}</li>
+            <li>O+ → {{grp_cnt['o+']}}</li>
+            <li>O- → {{grp_cnt['o-']}}</li>
+            <li>AB+ → {{grp_cnt['ab+']}}</li>
+            <li>AB- → {{grp_cnt['ab-']}}</li>
+        </ul>
+
+        <a href="/" class="btn">ADD NEW DONOR</a>
+        <a href="/donors" class="btn">VIEW DONORS</a>
+    </div>
+
+</div>
+</div>
 </body>
 </html>

@@ -101,7 +101,6 @@ try:
 
         plt.figure(figsize=(5,5))
         plt.pie(sizes, labels=labels, autopct='%1.1f%%')
-        plt.title("Donors by Blood Group")
         plt.savefig(chart_path)
         plt.close()
 
