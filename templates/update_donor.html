@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Update Donor</title>
+
+<style>
+html, body {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    overflow: hidden;
+    background: linear-gradient(to right, #ff4d4d, #ff9999);
+    font-family: sans-serif;
+}
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.container {
+    background: rgba(255, 255, 255, 0.95);
+    padding: 30px;
+    width: 95%;
+    max-width: 750px;
+    border-radius: 15px;
+    box-shadow: 0px 6px 18px rgba(0,0,0,0.2);
+    text-align: center;
+}
+h1 {
+    font-size: 24px;
+    color: #d60000;
+    margin: 6px 0;
+}
+h2 {
+    color: #0077cc;
+    font-size: 20px;
+    font-weight: 600;
+}
+.form-group {
+    text-align: left;
+    margin: 14px 0;
+}
+label {
+    font-weight: 600;
+}
+input, select {
+    width: 100%;
+    padding: 10px;
+    margin-top: 6px;
+    border-radius: 8px;
+    border: 1px solid #ccc;
+    font-size: 15px;
+}
+.sub {
+    width: 100%;
+    background: #d60000;
+    color: white;
+    padding: 12px;
+    border: none;
+    border-radius: 10px;
+    margin-top: 12px;
+    font-size: 16px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: 0.3s;
+}
+.sub:hover {
+    background: #a30000;
+    transform: scale(1.05);
+}
+.button {
+    margin-top: 14px;
+    display: block;
+    width: 97%;
+    background: #0077cc;
+    color: white;
+    padding: 12px;
+    border-radius: 10px;
+    text-decoration: none;
+    font-weight: bold;
+    transition: 0.3s;
+    font-size: 16px;
+}
+.button:hover {
+    background: #005999;
+    transform: scale(1.05);
+}
+</style>
+
+</head>
+<body>
+<div class="container">
+
+    <h1>YOURCARE BLOOD BANK</h1>
+    <h1>Update Donor Information</h1>
+    <h2>EDIT DONOR DETAILS</h2>
+
+    <form action="/save_update/{{ donor[0] }}" method="POST">
+
+        <div class="form-group">
+            <label>Donor Full Name:</label>
+            <input type="text" name="name" value="{{ donor[1] }}" required>
+        </div>
+
+        <div class="form-group">
+            <label>Age:</label>
+            <input type="number" name="age" min="18" max="100" value="{{ donor[2] }}" required>
+        </div>
+
+        <div class="form-group">
+            <label>Blood Group:</label>
+            <select name="blood_group" required>
+                {% for bg in ['A+','A-','B+','B-','O+','O-','AB+','AB-'] %}
+                <option value="{{ bg.lower() }}" 
+                    {% if donor[3].lower() == bg.lower() %} selected {% endif %}>
+                    {{ bg }}
+                </option>
+                {% endfor %}
+            </select>
+        </div>
+
+        <div class="form-group">
+            <label>Phone Number:</label>
+            <input type="text" name="phone" value="{{ donor[4] }}" required>
+        </div>
+
+        <input type="submit" value="UPDATE DONOR DETAILS" class="sub">
+    </form>
+
+    <a href="/donors" class="button">BACK TO DONOR LIST</a>
+
+</div>
+</body>
+</html>

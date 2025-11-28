@@ -15,7 +15,7 @@
     <style>
     body {
     margin: 0;
-    background: #ff8f8f; /* same soft red background */
+    background: #ff8f8f; 
     font-family: Arial, sans-serif;
     }
 
@@ -32,7 +32,7 @@
     margin-bottom: 10px;
     }
 
-/* ===== White Center Card ===== */
+
     .container {
     width: 80%;
     max-width: 900px;
@@ -44,7 +44,7 @@
     text-align: center;
     }
 
-/* ===== Dropdown + Form ===== */
+
     select {
     padding: 10px;
     border-radius: 10px;
@@ -53,7 +53,7 @@
     margin-left: 10px;
     }
 
-/* ===== Table Styling ===== */
+
     table {
     width: 100%;
     margin-top: 30px;
@@ -78,7 +78,7 @@
     background: #f2f8ff;
     }
 
-/* ===== Buttons ===== */
+
     a.button {
     display: inline-block;
     padding: 12px 30px;
@@ -95,7 +95,7 @@
     transform: scale(1.05);
     }
 
-/* Delete Button */
+
     a.delete-btn {
     color: red;
     font-weight: bold;
@@ -205,6 +205,16 @@ document.getElementById("donorForm").addEventListener("submit", function (e) {
     </p>
 {% endif %}
 
+    <a href="/export_csv" class="button" style="background: #28a745;">Export Data in Excel</a>
+
+    {% with messages = get_flashed_messages() %}
+  {% if messages %}
+    <script>
+      alert("{{ messages[0] }}");
+    </script>
+  {% endif %}
+{% endwith %}
+
         
         <table>
             <tr>
@@ -222,7 +232,20 @@ document.getElementById("donorForm").addEventListener("submit", function (e) {
                 <td>{{ d[2] }}</td>
                 <td>{{ d[3].upper() }}</td>
                 <td>{{ d[4] }}</td>
-                <td><a href="#" onclick="confirmDelete({{ d[0] }})">Delete</a></td>
+                <td>
+    <a href="/update?id={{ d[0] }}" 
+   onclick="return confirm('Are you sure you want to update this donor?');"
+   style="background:#0077cc; color:white; padding:6px 14px; border-radius:8px; text-decoration:none; font-weight:bold; font-size:14px; margin-right:6px;">
+   Update
+</a>
+
+    <a href="#" 
+       onclick="confirmDelete({{ d[0] }})"
+       style="background:#d60000; color:white; padding:6px 14px; border-radius:8px; text-decoration:none; font-weight:bold; font-size:14px;">
+       Delete
+    </a>
+</td>
+
             </tr>
             {% endfor %}
         </table>
