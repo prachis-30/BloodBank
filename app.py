@@ -1,6 +1,6 @@
 import os
 import matplotlib
-matplotlib.use('Agg')  # Use non-GUI backend
+matplotlib.use('Agg')  
 import matplotlib.pyplot as plt
 from flask import Flask, render_template, request, redirect, Response, flash
 import sqlite3
@@ -12,7 +12,7 @@ app.secret_key = "abc123"
 
 # --- DATABASE CONNECTION FUNCTION ---
 def get_db_connection():
-    """Return a connection and ensure the donors table exists."""
+   
     conn = sqlite3.connect('donors.db')
     cursor = conn.cursor()
     cursor.execute("""
@@ -170,7 +170,7 @@ def export_csv():
 
     csv_content = "ID,Name,Age,Blood Group,Phone\n"
     for row in data:
-        phone_text = f'"{row[4]}"'  # ensure phone is text
+        phone_text = f'"{row[4]}"'  
         csv_content += f"{row[0]},{row[1]},{row[2]},{row[3]},{phone_text}\n"
 
     return Response(

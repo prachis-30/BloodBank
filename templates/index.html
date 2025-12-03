@@ -1,146 +1,146 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>BloodBank</title>
-<style>
-html, body {
-    margin: 0;
-    padding: 0;
-    height: 100%;
-    font-family: sans-serif;
-    background: linear-gradient(to right, #ff4d4d, #ff9999);
-}
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>BloodBank</title>
+        <style>
+            html, body {
+                margin: 0;
+                padding: 0;
+                height: 100%;
+                font-family: sans-serif;
+                background: linear-gradient(to right, #ff4d4d, #ff9999);
+            }
 
-body {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    overflow: hidden;
-}
+            body {
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                overflow: hidden;
+            }
 
-.container {
-    background: rgba(255, 255, 255, 0.95);
-    padding: 30px;
-    width: 95%;
-    max-width: 750px; /* increased width */
-    border-radius: 15px;
-    box-shadow: 0px 6px 18px rgba(0,0,0,0.2);
-    text-align: center;
-    box-sizing: border-box;
-}
+            .container {
+                background: rgba(255, 255, 255, 0.95);
+                padding: 30px;
+                width: 95%;
+                max-width: 750px; 
+                border-radius: 15px;
+                box-shadow: 0px 6px 18px rgba(0,0,0,0.2);
+                text-align: center;
+                box-sizing: border-box;
+            }
 
-h1 {
-    font-size: 24px;
-    color: #d60000;
-    margin: 8px 0;
-    font-weight: 600;
-}
+            h1 {
+                font-size: 24px;
+                color: #d60000;
+                margin: 8px 0;
+                font-weight: 600;
+            }
 
-h2 {
-    margin-top: 12px;
-    color: #0077cc;
-    font-size: 20px;
-    font-weight: 600;
-}
+            h2 {
+                margin-top: 12px;
+                color: #0077cc;
+                font-size: 20px;
+                font-weight: 600;
+            }
 
-.form-group {
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-    margin: 15px 0;
-}
+            .form-group {
+                display: flex;
+                flex-direction: column;
+                align-items: flex-start;
+                margin: 15px 0;
+            }
 
-label {
-    font-weight: 600;
-    margin-bottom: 6px;
-}
+            label {
+                font-weight: 600;
+                margin-bottom: 6px;
+            }
 
-input, select {
-    width: 100%;
-    padding: 10px;
-    border-radius: 8px;
-    border: 1px solid #ccc;
-    font-size: 15px;
-    box-sizing: border-box;
-}
+            input, select {
+                width: 100%;
+                padding: 10px;
+                border-radius: 8px;
+                border: 1px solid #ccc;
+                font-size: 15px;
+                box-sizing: border-box;
+            }
 
-.sub {
-    width: 100%;
-    background: #d60000;
-    color: white;
-    padding: 12px;
-    border: none;
-    border-radius: 10px;
-    font-size: 16px;
-    cursor: pointer;
-    font-weight: bold;
-    transition: 0.3s;
-    margin-top: 10px;
-}
+            .sub {
+                width: 100%;
+                background: #d60000;
+                color: white;
+                padding: 12px;
+                border: none;
+                border-radius: 10px;
+                font-size: 16px;
+                cursor: pointer;
+                font-weight: bold;
+                transition: 0.3s;
+                margin-top: 10px;
+            }
 
-.sub:hover {
-    background: #a30000;
-    transform: scale(1.05);
-}
+            .sub:hover {
+                background: #a30000;
+                transform: scale(1.05);
+            }
 
-.button {
-    margin-top: 15px;
-    display: block;
-    width: 97%;
-    background: #0077cc;
-    color: white;
-    padding: 12px;
-    border-radius: 10px;
-    text-decoration: none;
-    font-weight: bold;
-    transition: 0.3s;
-    text-align: center;
-    font-size: 16px;
-}
+            .button {
+                margin-top: 15px;
+                display: block;
+                width: 97%;
+                background: #0077cc;
+                color: white;
+                padding: 12px;
+                border-radius: 10px;
+                text-decoration: none;
+                font-weight: bold;
+                transition: 0.3s;
+                text-align: center;
+                font-size: 16px;
+            }
 
-.button:hover {
-    background: #005999;
-    transform: scale(1.05);
-}
-</style>
-</head>
-<body>
-<div class="container">
-    <h1>YOURCARE BLOOD BANK welcomes you</h1>
-    <h1>Thank you for donating blood and saving lives</h1>
-    <h2>ADD NEW BLOOD DONOR</h2>
-    <form action="/add_donor" method="post">
-        <div class="form-group">
-            <label for="name">Donor Full Name:</label>
-            <input type="text" id="name" name="name" required>
+            .button:hover {
+                background: #005999;
+                transform: scale(1.05);
+            }
+        </style>
+    </head>
+    <body>
+        <div class="container">
+            <h1>YOURCARE BLOOD BANK welcomes you</h1>
+            <h1>Thank you for donating blood and saving lives</h1>
+            <h2>ADD NEW BLOOD DONOR</h2>
+            <form action="/add_donor" method="post">
+                <div class="form-group">
+                    <label for="name">Donor Full Name:</label>
+                    <input type="text" id="name" name="name" required>
+                </div>
+                <div class="form-group">
+                    <label for="age">Enter Age:</label>
+                    <input type="number" id="age" name="age" min="18" max="100" required>
+                </div>
+                <div class="form-group">
+                    <label for="phone">Phone Number:</label>
+                    <input type="tel" id="phone" name="phone" required>
+                </div>
+                <div class="form-group">
+                    <label for="blood_group">Blood Group:</label>
+                    <select id="blood_group" name="blood_group" required>
+                        <option value="">--Select--</option>
+                        <option value="a+">A+</option>
+                        <option value="a-">A-</option>
+                        <option value="b+">B+</option>
+                        <option value="b-">B-</option>
+                        <option value="o+">O+</option>
+                        <option value="o-">O-</option>
+                        <option value="ab+">AB+</option>
+                        <option value="ab-">AB-</option>
+                    </select>
+                </div>
+                <input type="submit" value="SUBMIT DONOR DETAILS" class="sub">
+            </form>
+            <a href="/dashboard" class="button">GO TO DASHBOARD</a>
         </div>
-        <div class="form-group">
-            <label for="age">Enter Age:</label>
-            <input type="number" id="age" name="age" min="18" max="100" required>
-        </div>
-        <div class="form-group">
-            <label for="phone">Phone Number:</label>
-            <input type="tel" id="phone" name="phone" required>
-        </div>
-        <div class="form-group">
-            <label for="blood_group">Blood Group:</label>
-            <select id="blood_group" name="blood_group" required>
-                <option value="">--Select--</option>
-                <option value="a+">A+</option>
-                <option value="a-">A-</option>
-                <option value="b+">B+</option>
-                <option value="b-">B-</option>
-                <option value="o+">O+</option>
-                <option value="o-">O-</option>
-                <option value="ab+">AB+</option>
-                <option value="ab-">AB-</option>
-            </select>
-        </div>
-        <input type="submit" value="SUBMIT DONOR DETAILS" class="sub">
-    </form>
-    <a href="/dashboard" class="button">GO TO DASHBOARD</a>
-</div>
-</body>
+    </body>
 </html>
